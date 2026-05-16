@@ -1,0 +1,12 @@
+class Solution:
+    def lastStoneWeight(self, stones: List[int]) -> int:
+        
+        while len(stones) > 1:
+
+            stones.sort()
+            if stones[-1] == stones[-2]: 
+                if len(stones) == 2: return stones[-1] - stones[-2]
+                del stones[-1]; del stones[-1]
+            else: stones[-1] = stones[-1] - stones[-2]; del stones[-2]
+
+        return stones[0]
